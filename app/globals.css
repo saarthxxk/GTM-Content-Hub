@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f7fb;
+  --surface: #ffffff;
+  --foreground: #14161f;
+  --muted: #6b7080;
+  --border: #e4e6ee;
+
+  --brand: #4338ca;
+  --brand-hover: #3730a3;
+  --brand-soft: #eef0fd;
+
+  --success: #15803d;
+  --success-soft: #ecfdf3;
+  --warning: #b45309;
+  --warning-soft: #fffaeb;
+  --danger: #b91c1c;
+  --danger-soft: #fef2f2;
+  --info: #1d4ed8;
+  --info-soft: #eff4ff;
+  --neutral-soft: #eef0f4;
+
+  --shadow-sm: 0 1px 2px 0 rgb(20 22 31 / 0.04);
+  --shadow-md: 0 4px 12px -2px rgb(20 22 31 / 0.08), 0 2px 4px -2px rgb(20 22 31 / 0.04);
+  --shadow-lg: 0 12px 32px -8px rgb(20 22 31 / 0.16);
+
+  /* Categorical chart series — fixed order, validated for CVD-safe adjacent
+     contrast. Never cycle or reassign by rank; a series keeps its color when
+     filters change which series are visible. See dataviz color-formula. */
+  --chart-1: #2a78d6; /* blue */
+  --chart-2: #eb6834; /* orange */
+  --chart-3: #1baf7a; /* aqua */
+  --chart-4: #eda100; /* yellow */
+  --chart-5: #e87ba4; /* magenta */
+  --chart-6: #4a3aa7; /* violet */
+  --chart-7: #e34948; /* red */
+  --chart-8: #008300; /* green */
+  --chart-grid: #e4e6ee;
+  --chart-axis: #c3c2b7;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-soft: var(--brand-soft);
+
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-neutral-soft: var(--neutral-soft);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-6: var(--chart-6);
+  --color-chart-7: var(--chart-7);
+  --color-chart-8: var(--chart-8);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+::selection {
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Scrollbar polish */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d3d6e0; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #b9bdcc; }
+
+/* TipTap editor content styling */
+.prose-editor {
+  min-height: 320px;
+}
+.prose-editor .ProseMirror {
+  outline: none;
+  min-height: 300px;
+}
+.prose-editor .ProseMirror p { margin: 0 0 0.9em; line-height: 1.7; }
+.prose-editor .ProseMirror h1 { font-size: 1.6em; font-weight: 700; margin: 0.6em 0 0.4em; }
+.prose-editor .ProseMirror h2 { font-size: 1.3em; font-weight: 700; margin: 0.6em 0 0.4em; }
+.prose-editor .ProseMirror ul { list-style: disc; padding-left: 1.4em; margin-bottom: 0.9em; }
+.prose-editor .ProseMirror ol { list-style: decimal; padding-left: 1.4em; margin-bottom: 0.9em; }
+.prose-editor .ProseMirror a { color: var(--brand); text-decoration: underline; }
+.prose-editor .ProseMirror blockquote { border-left: 3px solid var(--border); padding-left: 1em; color: var(--muted); margin: 0.9em 0; }
+.prose-editor .ProseMirror img { max-width: 100%; border-radius: 8px; }
+.prose-editor .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: var(--muted);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
